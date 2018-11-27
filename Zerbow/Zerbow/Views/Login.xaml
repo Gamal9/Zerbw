@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Zerbow.Views.Login"
+              BackgroundColor="#894183"  >
+
+
+    <RelativeLayout>
+        <StackLayout x:Name="logolayout"
+                     RelativeLayout.HeightConstraint="{ConstraintExpression 
+				Type=RelativeToParent,
+				Property=Height,
+				Factor=0.5}"
+                     RelativeLayout.WidthConstraint="{ConstraintExpression
+				Type=RelativeToParent,
+				Property=Width,
+				Factor=1}"
+                     HorizontalOptions="Center" VerticalOptions="Center">
+
+            <Image Source="Zerbpw.png"
+                   Aspect="AspectFit"  />
+           
+
+        </StackLayout>
+
+        <StackLayout Padding="40,10,40,40"
+                     RelativeLayout.WidthConstraint="{ConstraintExpression
+				Type=RelativeToParent,
+				Property=Width,
+				Factor=1}"
+
+                     RelativeLayout.YConstraint="{ConstraintExpression
+				Type=RelativeToParent,
+				ElementName=logolayout,
+				Property=Height,
+				Factor=0.5
+				}">
+            <Entry Keyboard="Email" Placeholder="Email" x:Name="email" Style="{StaticResource EntryLogin}"></Entry>
+            <Entry Keyboard="Text" Placeholder="Password" x:Name="password" IsPassword="True" Style="{StaticResource EntryLogin}"></Entry>
+            <ActivityIndicator x:Name="activityIndicator" Color="White" IsRunning="False"></ActivityIndicator>
+            <Button Text="Sign-in" Clicked="SignIn" BackgroundColor="#49274A" BorderRadius="25"
+                    TextColor="#F8EEE7" Margin="0,8,0,0">
+            </Button>
+            <Button Text="Sign-up" BackgroundColor="#FF" Clicked="SignUp" TextColor="#F8EEE7"></Button>
+        </StackLayout>
+    </RelativeLayout>
+
+</ContentPage>
