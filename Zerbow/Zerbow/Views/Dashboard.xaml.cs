@@ -81,8 +81,9 @@ namespace Zerbow.Views
         {
             var userRoute = e.Item as UserRoute;
             
-            
-             await Navigation.PushAsync(new RouteDetails(userRoute.IdRoute));
+          
+          await Navigation.PushAsync(new RouteDetails(userRoute.IdRoute));
+           
           
           
         }
@@ -123,7 +124,7 @@ namespace Zerbow.Views
 
             usersRoutes = from r in routesList
                           join u in userList on r.Id_User equals u.ID
-                          select new UserRoute { IdRoute = r.Id, ResourceName = u.ResourceName, From = r.From, To = r.To };
+                          select new UserRoute { IdRoute = r.Id, ResourceName = u.ResourceName, From = r.From, To = r.To , Car = r.Id_Car};
 
             routesListView.ItemsSource = usersRoutes;
 
@@ -139,12 +140,31 @@ namespace Zerbow.Views
 
         private void OnSearch(object sender, TextChangedEventArgs e)
         {
+            if (!string.IsNullOrWhiteSpace(e.NewTextValue))
+            {
+                routesListView.ItemsSource =
+                    routesList.Where(
+                        route => route.From.ToLower().Contains(e.NewTextValue.ToLower()) || route.To.ToLower().Contains(e.NewTextValue.ToLower()));
+            }
+            else
+            {
+                routesListView.ItemsSource = routesList;
+            }
+        }
+
+        private   void LogOut(object sender, EventArgs e)
+        {
+            Application.Current.MainPage = new NavigationPage(new Login());
+        }
+
+        private void SearchBar_SearchButtonPressed(object sender, EventArgs e)
+        {
 
         }
 
-        private  async void LogOut(object sender, EventArgs e)
+        private void SuggestionsListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            await Navigation.PushAsync(new Login());
+
         }
     }
 }

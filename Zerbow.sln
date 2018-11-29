@@ -13,6 +13,7 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Zerbow", "Zerbow\Zerbow\Zer
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Zerbow\Zerbow\Zerbow.projitems*{1fcc485a-ca33-4f3a-a01f-cfc231c9316b}*SharedItemsImports = 4
 		Zerbow\Zerbow\Zerbow.projitems*{4b6711fb-82b4-43f7-babb-f6657bcebb6f}*SharedItemsImports = 4
 		Zerbow\Zerbow\Zerbow.projitems*{79f1eb00-e289-4eb2-81d7-7c8941663d3e}*SharedItemsImports = 4
 		Zerbow\Zerbow\Zerbow.projitems*{7acc8bec-adeb-4682-ba30-f42e0d18b765}*SharedItemsImports = 13

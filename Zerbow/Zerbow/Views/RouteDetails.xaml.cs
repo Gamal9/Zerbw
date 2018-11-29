@@ -20,12 +20,13 @@ namespace Zerbow.Views
         private Routes route;
         private Users currentUser;
         private ToolbarItem callbtn;
-
         public RouteDetails(string idRoute)
         {
 
            
             InitializeComponent();
+
+           
             currentUser = (Users)Application.Current.Properties["user"];
 
             LoadRouteData(idRoute);
@@ -35,7 +36,9 @@ namespace Zerbow.Views
                 Text = "Call",
                 Command = new Command(Callbt),
                 Order = ToolbarItemOrder.Primary,
-                Priority = 3
+                Priority = 3,
+                Icon = "icons8-phone-50.png"
+
             };
 
         }
@@ -67,11 +70,10 @@ namespace Zerbow.Views
             userRoute = await AzureManager.AzureManagerInstance.GetUserWhere(userSelect => userSelect.ID == userRoute.ID);
 
             nameLabel.Text = userRoute.Name;
-         
-              
-            descriptionLabel.Text = route.Comments;
+            
+            descriptionLabel.Text = "Comments:\n" + route.Comments;
             departureLabel.Text = "Departure: \n" + route.Depart_Date.ToString("dd/MMMM H:mm ") + "h";
-            profileImage.Source = userRoute.Photo;
+            profileImage.Source =  userRoute.Photo;
 
 
             Reservations reservation = new Reservations

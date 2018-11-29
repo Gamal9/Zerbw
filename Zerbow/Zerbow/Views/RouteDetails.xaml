@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Zerbow.Views.RouteDetails">
+             x:Class="Zerbow.Views.RouteDetails"
+             xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             Title="Driver Profile">
 
 
 
@@ -9,29 +11,29 @@
     <ScrollView>
         <StackLayout >
             <StackLayout >
-                <Label Text="Driver Profile" FontAttributes="Bold" FontSize="Large"></Label>
+               
                 <StackLayout Orientation="Horizontal">
 
-                    <Image x:Name="profileImage"  Aspect="AspectFill" WidthRequest="150" HeightRequest="150"></Image>
-                    <StackLayout Orientation="Vertical" Padding="15,0,0,0">
-                        <Label x:Name="nameLabel" FontSize="Large" ></Label>
-                        <Label x:Name="ageLabel" ></Label>
-                        <Label x:Name="phoneLabel" ></Label>
+                    <ic:CircleImage x:Name="profileImage"  HeightRequest="100" HorizontalOptions="Center"  TranslationY="50" VerticalOptions="End" WidthRequest="100"></ic:CircleImage>
+                    <StackLayout Grid.Row="1" Padding="0,50,0,00" HorizontalOptions="Center" >
+                        <Label x:Name="nameLabel" Style="{StaticResource  ProfileNameLabel}" ></Label>
+                      
                     </StackLayout>
 
                 </StackLayout>
-                <Label Text="Route Information" FontAttributes="Bold" FontSize="Large"></Label>
-                <Label x:Name="descriptionLabel"  FontSize="Medium"></Label>
-                <Label x:Name="departureLabel" FontSize="Large"></Label>
-                <Label x:Name="seatsLabel" FontSize="Large"></Label>
+                <Label Text="Route Information" Style="{StaticResource ProfileNameLabel}"></Label>
+                <Label x:Name="carinfo" Text="Vechiel Information" Style="{StaticResource ProfileNameLabel}"></Label>
+                <Label x:Name="descriptionLabel" Style="{StaticResource ProfileNameLabel}" ></Label>
+                <Label x:Name="departureLabel" Style="{StaticResource ProfileNameLabel}" ></Label>
+                <Label x:Name="seatsLabel" Style="{StaticResource StatsNumberLabel}"></Label>
 
-                <Button  Text="Show Starting point" Clicked="OnStartingPoint"></Button>
-                <Button  Text="Show Ending point" Clicked="OnEndingPoint"></Button>
+                <Button  Text="Show Starting point" Style="{StaticResource buttonActionStyle }" Clicked="OnStartingPoint"></Button>
+                <Button  Text="Show Ending point" Style="{StaticResource buttonActionStyle}" Clicked="OnEndingPoint"></Button>
 
                 <ActivityIndicator x:Name="activityIndicator"></ActivityIndicator>
 
-                <Button x:Name="reserveButton"   Text="Reserve seat" Clicked="OnReserved" IsVisible="False"></Button>
-                <Button x:Name="cancelButton" Text="Cancel Reservation" Clicked="OnCancelReservation"  IsVisible="False"></Button>
+                <Button x:Name="reserveButton" Style="{StaticResource buttonSuccessStyle}"   Text="Reserve seat" Clicked="OnReserved" IsVisible="False"></Button>
+                <Button x:Name="cancelButton" Style="{StaticResource buttonCancelStyle}" Text="Cancel Reservation" Clicked="OnCancelReservation"  IsVisible="False"></Button>
             </StackLayout>
         </StackLayout>
 

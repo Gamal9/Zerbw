@@ -10,5 +10,6 @@ namespace Zerbow.Models
         public string From { get; set; }
         public string To { get; set; }
         public string ResourceName { get; set; }
+        public string Car { get; set; }
     }
 }

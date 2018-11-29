@@ -92,8 +92,8 @@ namespace Zerbow.Views
         {
             pinFlag = false;
             infoLabel.Text = "Tap starting point in the Map";
-            this.myMap.Pins.Clear();
-            this.ToolbarItems.Clear();
+            myMap.Pins.Clear();
+            ToolbarItems.Clear();
         }
 
         private  void MyMap_Tapped(object sender, MapTapEventArgs e)
@@ -127,7 +127,7 @@ namespace Zerbow.Views
                 var cancelButton = new ToolbarItem
                 {
                     Text = "Cancel",
-                    Command = new Command(this.Cancel),
+                    Command = new Command(Cancel),
                 };
 
                 this.ToolbarItems.Add(saveButton);
@@ -141,7 +141,6 @@ namespace Zerbow.Views
         async void SearchAdress()
         {
             Geocoder geocoder = new Geocoder();
-            //IEnumerable<string> adresses = await geocoder.GetAddressesForPositionAsync(position);
             await geocoder.GetPositionsForAddressAsync("");
 
         }
@@ -156,7 +155,7 @@ namespace Zerbow.Views
                 var pos = new Position(position.Latitude, position.Longitude);
                 myMap.MoveToRegion(new MapSpan(pos, 0.01, 0.01));
                 stackMap.Children.Add(myMap);
-                this.IsBusy = false;
+                IsBusy = false;
                 infoLabel.Text = "Tap starting point in the Map";
             }
             catch (Exception ex)

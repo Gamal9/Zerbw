@@ -139,7 +139,7 @@ namespace Zerbow.Views
                 newRoute = (Routes)properties["route"];
                 newRoute.From = startingNameEntry.Text;
                 newRoute.To = endingNameEntry.Text;
-                newRoute.Capacity = Int32.Parse("" + seatsEntry.Text);
+                newRoute.Capacity = int.Parse("" + seatsEntry.Text);
                 newRoute.Comments = commentsEditor.Text;
                 newRoute.Depart_Time = departureTimePicker.Time.ToString();
                 newRoute.Id_User = currentUser.ID;
