@@ -37,22 +37,22 @@ namespace Zerbow.Models
         public string CarModel { get; set; }
 
 
-        //public override string ToString()
-        //{
-        //    return string.Format("[Routes: ID={1}, " +
-        //                         "ID_User={2}, " +
-        //                         "ID_Car={3}, " +
-        //                         "From={4}, " +
-        //                         "From_Longitude={5}," +
-        //                         "From_Latitude={6}, " +
-        //                         "To={7}," +
-        //                         "To_Latitude={8}," +
-        //                         "To_Longitude={9}," +
-        //                         "Capacity={10}," +
-        //                         "Comments={11}," +
-        //                         "depart_time={12}]",
-        //                         Id, Id_User, Id_Car, From, From_Longitude, From_Latitude, To, To_Latitude, To_Longitude, Capacity, Comments, Depart_Time);
-        //}
+        public override string ToString()
+        {
+            return string.Format("[Routes: ID={1}, " +
+                                 "ID_User={2}, " +
+                                 "ID_Car={3}, " +
+                                 "From={4}, " +
+                                 "From_Longitude={5}," +
+                                 "From_Latitude={6}, " +
+                                 "To={7}," +
+                                 "To_Latitude={8}," +
+                                 "To_Longitude={9}," +
+                                 "Capacity={10}," +
+                                 "Comments={11}," +
+                                 "depart_time={12}]",
+                                 Id, Id_User, Id_Car, From, From_Longitude, From_Latitude, To, To_Latitude, To_Longitude, Capacity, Comments, Depart_Time);
+        }
 
     }
 }

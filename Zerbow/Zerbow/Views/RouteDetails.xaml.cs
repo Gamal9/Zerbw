@@ -75,9 +75,9 @@ namespace Zerbow.Views
         private async void LoadData()
         {
             userRoute = await AzureManager.AzureManagerInstance.GetUserWhere(userRoute => userRoute.ID == userRoute.ID   );
-
+           
             nameLabel.Text = userRoute.Name;
-            carinfo.Text = userRoute.ResourceName;
+            
             descriptionLabel.Text = "Comments:\n" + route.Comments;
             departureLabel.Text = "Departure: \n" + route.Depart_Date.ToString("dd/MMMM H:mm ") + "h";
             profileImage.Source =  userRoute.Photo;
@@ -103,8 +103,13 @@ namespace Zerbow.Views
 
            
             seatsLabel.Text = "Seats Available: " + (route.Capacity - reservations.Count);
-           
 
+            usersRoutes = from r in carlist
+                          join u in carlist on r.ID equals u.ID
+                          select new UserRoute
+                          {
+                              IdRoute = r.ID, ResourceName = u.Model
+                          };
         }
 
         private async void LoadReservation()
