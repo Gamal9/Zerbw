@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,15 +21,17 @@ namespace Zerbow.Views
         private Routes route;
         private Users currentUser;
         private ToolbarItem callbtn;
+        private List<Cars> carlist;
+        private IEnumerable<UserRoute> usersRoutes;
         public RouteDetails(string idRoute)
         {
 
            
             InitializeComponent();
+            carlist = new List<Cars>  ();
 
-           
             currentUser = (Users)Application.Current.Properties["user"];
-
+             
             LoadRouteData(idRoute);
 
             callbtn = new ToolbarItem
@@ -54,10 +57,14 @@ namespace Zerbow.Views
         {
             this.IsBusy = true;
 
-            route = await AzureManager.AzureManagerInstance.GetRouteWhere(route => route.Id == idRoute);
+         
+            route = await AzureManager.AzureManagerInstance.GetRouteWhere(route => route.Id == idRoute  );
             userRoute = new Users
             {
-                ID = route.Id_User
+                ID = route.Id_User,
+              
+                 
+                
             };
 
             
@@ -67,14 +74,14 @@ namespace Zerbow.Views
 
         private async void LoadData()
         {
-            userRoute = await AzureManager.AzureManagerInstance.GetUserWhere(userSelect => userSelect.ID == userRoute.ID);
+            userRoute = await AzureManager.AzureManagerInstance.GetUserWhere(userRoute => userRoute.ID == userRoute.ID   );
 
             nameLabel.Text = userRoute.Name;
-            
+            carinfo.Text = userRoute.ResourceName;
             descriptionLabel.Text = "Comments:\n" + route.Comments;
             departureLabel.Text = "Departure: \n" + route.Depart_Date.ToString("dd/MMMM H:mm ") + "h";
             profileImage.Source =  userRoute.Photo;
-
+            
 
             Reservations reservation = new Reservations
             {
@@ -88,8 +95,16 @@ namespace Zerbow.Views
             {
                 ToolbarItems.Add(callbtn);
             }
-          
+            else
+            {
+                ToolbarItems.Remove(callbtn);
+            }
+
+
+           
             seatsLabel.Text = "Seats Available: " + (route.Capacity - reservations.Count);
+           
+
         }
 
         private async void LoadReservation()
@@ -117,6 +132,8 @@ namespace Zerbow.Views
             }
           
             this.IsBusy = false;
+
+         
         }
 
 

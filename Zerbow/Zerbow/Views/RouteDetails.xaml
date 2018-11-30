@@ -14,15 +14,15 @@
                
                 <StackLayout Orientation="Horizontal">
 
-                    <ic:CircleImage x:Name="profileImage"  HeightRequest="100" HorizontalOptions="Center"  TranslationY="50" VerticalOptions="End" WidthRequest="100"></ic:CircleImage>
-                    <StackLayout Grid.Row="1" Padding="0,50,0,00" HorizontalOptions="Center" >
+                    <ic:CircleImage x:Name="profileImage"  WidthRequest="100"></ic:CircleImage>
+                    <StackLayout Orientation="Horizontal" Padding="15,0,0,0" >
                         <Label x:Name="nameLabel" Style="{StaticResource  ProfileNameLabel}" ></Label>
                       
                     </StackLayout>
 
                 </StackLayout>
                 <Label Text="Route Information" Style="{StaticResource ProfileNameLabel}"></Label>
-                <Label x:Name="carinfo" Text="Vechiel Information" Style="{StaticResource ProfileNameLabel}"></Label>
+                <Label x:Name="carinfo" Style="{StaticResource ProfileNameLabel}" ></Label>
                 <Label x:Name="descriptionLabel" Style="{StaticResource ProfileNameLabel}" ></Label>
                 <Label x:Name="departureLabel" Style="{StaticResource ProfileNameLabel}" ></Label>
                 <Label x:Name="seatsLabel" Style="{StaticResource StatsNumberLabel}"></Label>

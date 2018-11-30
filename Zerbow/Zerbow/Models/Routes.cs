@@ -34,6 +34,7 @@ namespace Zerbow.Models
         public string Depart_Time { get; set; }
 
         public DateTime Depart_Date { get; set; }
+        public string CarModel { get; set; }
 
 
         //public override string ToString()

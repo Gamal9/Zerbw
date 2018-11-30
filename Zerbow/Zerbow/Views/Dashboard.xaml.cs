@@ -20,7 +20,7 @@ namespace Zerbow.Views
         private ToolbarItem reservationsButton;
 
         private List<Users> userList;
-
+        
         private IEnumerable<UserRoute> usersRoutes;
         public Dashboard ()
 		{
@@ -83,8 +83,8 @@ namespace Zerbow.Views
             
           
           await Navigation.PushAsync(new RouteDetails(userRoute.IdRoute));
+
            
-          
           
         }
         private async void LoadRouteList()
@@ -124,7 +124,7 @@ namespace Zerbow.Views
 
             usersRoutes = from r in routesList
                           join u in userList on r.Id_User equals u.ID
-                          select new UserRoute { IdRoute = r.Id, ResourceName = u.ResourceName, From = r.From, To = r.To , Car = r.Id_Car};
+                          select new UserRoute { IdRoute = r.Id, ResourceName = u.ResourceName, From = r.From, To = r.To ,carModel = r.CarModel };
 
             routesListView.ItemsSource = usersRoutes;
 
@@ -152,9 +152,10 @@ namespace Zerbow.Views
             }
         }
 
-        private   void LogOut(object sender, EventArgs e)
+        private  void LogOut(object sender, EventArgs e)
         {
             Application.Current.MainPage = new NavigationPage(new Login());
+         
         }
 
         private void SearchBar_SearchButtonPressed(object sender, EventArgs e)

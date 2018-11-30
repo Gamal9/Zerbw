@@ -22,5 +22,6 @@ namespace Zerbow.Models
    
         public string Photo { get; set; }
         public string ResourceName { get; set; }
+  
     }
 }
