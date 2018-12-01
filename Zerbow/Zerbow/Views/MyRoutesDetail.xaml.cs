@@ -67,7 +67,7 @@ namespace Zerbow.Views
             descriptionLabel.Text = route.Comments;
             departureLabel.Text = "Departure: \n" + route.Depart_Date.ToString("dd/MMMM H:mm ") + "h";
             profileImage.Source = userRoute.Photo;
-           
+            
 
             if (reservationResult.Count != 0)
             {

@@ -158,14 +158,6 @@ namespace Zerbow.Views
          
         }
 
-        private void SearchBar_SearchButtonPressed(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SuggestionsListView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-
-        }
+        
     }
 }

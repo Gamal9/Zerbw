@@ -21,15 +21,15 @@ namespace Zerbow.Views
         private Routes route;
         private Users currentUser;
         private ToolbarItem callbtn;
-        private List<Cars> carlist;
-        private IEnumerable<UserRoute> usersRoutes;
+        private  Cars carslist;
+    
         public RouteDetails(string idRoute)
         {
 
            
             InitializeComponent();
-            carlist = new List<Cars>  ();
-
+            Title = userRoute.Name;
+            carslist = new Cars();
             currentUser = (Users)Application.Current.Properties["user"];
              
             LoadRouteData(idRoute);
@@ -57,15 +57,18 @@ namespace Zerbow.Views
         {
             this.IsBusy = true;
 
-         
-            route = await AzureManager.AzureManagerInstance.GetRouteWhere(route => route.Id == idRoute  );
+
+
+            carslist = await AzureManager.AzureManagerInstance.GetCars(cars => cars.ID == idRoute);
+            route = await AzureManager.AzureManagerInstance.GetRouteWhere(route => route.Id == idRoute   );
             userRoute = new Users
             {
                 ID = route.Id_User,
-              
+                ResourceName = carslist.Model
                  
                 
             };
+            
 
             
             this.LoadReservation();
@@ -74,10 +77,10 @@ namespace Zerbow.Views
 
         private async void LoadData()
         {
-            userRoute = await AzureManager.AzureManagerInstance.GetUserWhere(userRoute => userRoute.ID == userRoute.ID   );
-           
+            userRoute = await AzureManager.AzureManagerInstance.GetUserWhere(userRoute => userRoute.ID == userRoute.ID  && userRoute.ResourceName == userRoute.ResourceName );
+
             nameLabel.Text = userRoute.Name;
-            
+            carinfo.Text = carslist.Model;
             descriptionLabel.Text = "Comments:\n" + route.Comments;
             departureLabel.Text = "Departure: \n" + route.Depart_Date.ToString("dd/MMMM H:mm ") + "h";
             profileImage.Source =  userRoute.Photo;
@@ -104,12 +107,9 @@ namespace Zerbow.Views
            
             seatsLabel.Text = "Seats Available: " + (route.Capacity - reservations.Count);
 
-            usersRoutes = from r in carlist
-                          join u in carlist on r.ID equals u.ID
-                          select new UserRoute
-                          {
-                              IdRoute = r.ID, ResourceName = u.Model
-                          };
+
+          
+
         }
 
         private async void LoadReservation()
@@ -136,7 +136,7 @@ namespace Zerbow.Views
                 reserveButton.IsVisible = true;
             }
           
-            this.IsBusy = false;
+            IsBusy = false;
 
          
         }

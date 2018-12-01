@@ -89,11 +89,24 @@ namespace Zerbow.Services
             return null;
 
         }
-
-        public async Task<List<Cars>> GetMyCarAsync(Expression<Func<Cars, bool>> expression)
+        public async Task<Cars> GetCars(Expression<Func<Cars, bool>> linq)
         {
-            return await  carsTable.ToListAsync();
+            try
+            {
+                List<Cars> carlist = await carsTable.Where(linq).Take(1).ToListAsync();
+                return carlist.First();
+            }
+            catch (MobileServiceInvalidOperationException msioe)
+            {
+                Debug.WriteLine(@"INVALID {0}", msioe.Message);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(@"ERROR {0}", e.Message);
+            }
+            return null;
         }
+
 
 
         public async Task<List<Reservations>> GetReservationWhere(Expression<Func<Reservations, bool>> expression)
