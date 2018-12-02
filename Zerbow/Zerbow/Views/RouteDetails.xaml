@@ -15,19 +15,20 @@
                
                 <StackLayout Orientation="Horizontal">
 
-                    <ic:CircleImage x:Name="profileImage"  WidthRequest="100"></ic:CircleImage>
-                    <StackLayout Orientation="Horizontal" Padding="15,0,0,0" >
+                    <ic:CircleImage BorderColor="Black" x:Name="profileImage"  WidthRequest="100"></ic:CircleImage>
+                    <StackLayout VerticalOptions="Center" Padding="15,0,0,0" >
                         <Label x:Name="nameLabel" Style="{StaticResource  ProfileNameLabel}" ></Label>
                       
                     </StackLayout>
 
                 </StackLayout>
                 <Label Text="Route Information" Style="{StaticResource ProfileNameLabel}"></Label>
-                <Label x:Name="carinfo" Style="{StaticResource ProfileNameLabel}" ></Label>
-                <Label x:Name="carinfo2" Style="{StaticResource ProfileTagLabel}"></Label>
-                <Label x:Name="descriptionLabel" Style="{StaticResource ProfileNameLabel}" ></Label>
-                <Label x:Name="departureLabel" Style="{StaticResource ProfileNameLabel}" ></Label>
-                <Label x:Name="seatsLabel" Style="{StaticResource StatsNumberLabel}"></Label>
+                <Label x:Name="carinfo" Text="CarModel" Style="{StaticResource ProfileTagLabel}" ></Label>
+       
+
+                <Label x:Name="descriptionLabel" Text="Description" Style="{StaticResource ProfileTagLabel}" ></Label>
+                <Label x:Name="departureLabel" Text="Departure" Style="{StaticResource  ProfileTagLabel}" ></Label>
+                <Label x:Name="seatsLabel" Text="Seats" Style="{StaticResource StatsNumberLabel}"></Label>
 
                 <Button  Text="Show Starting point" Style="{StaticResource buttonActionStyle }" Clicked="OnStartingPoint"></Button>
                 <Button  Text="Show Ending point" Style="{StaticResource buttonActionStyle}" Clicked="OnEndingPoint"></Button>

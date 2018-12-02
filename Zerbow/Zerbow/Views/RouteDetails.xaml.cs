@@ -28,7 +28,7 @@ namespace Zerbow.Views
 
            
             InitializeComponent();
-            Title = userRoute.Name;
+          
             carslist = new Cars();
             currentUser = (Users)Application.Current.Properties["user"];
              
@@ -68,10 +68,10 @@ namespace Zerbow.Views
                  
                 
             };
-            
+           
 
-            
-            this.LoadReservation();
+
+                this.LoadReservation();
             this.LoadData();
         }
 
@@ -80,9 +80,10 @@ namespace Zerbow.Views
             userRoute = await AzureManager.AzureManagerInstance.GetUserWhere(userRoute => userRoute.ID == userRoute.ID  && userRoute.ResourceName == userRoute.ResourceName );
 
             nameLabel.Text = userRoute.Name;
-            carinfo.Text = carslist.Model;
-            descriptionLabel.Text = "Comments:\n" + route.Comments;
-            departureLabel.Text = "Departure: \n" + route.Depart_Date.ToString("dd/MMMM H:mm ") + "h";
+            carinfo.Text =    carslist.Model;
+   
+            descriptionLabel.Text = route.Comments;
+            departureLabel.Text = route.Depart_Date.ToString("dd/MMMM H:mm ") + "h";
             profileImage.Source =  userRoute.Photo;
             
 
@@ -103,8 +104,18 @@ namespace Zerbow.Views
                 ToolbarItems.Remove(callbtn);
             }
 
+            if (route.Depart_Date.CompareTo(DateTime.Today.Add(DateTime.Now.TimeOfDay)) < 0)
+            {
+                await DisplayAlert("Bad news ", "this route is epxired", "Accept");
+                cancelButton.IsVisible = false;
+                reserveButton.IsVisible = false;
+            }
+            else
+            {
+                cancelButton.IsVisible = false;
+                reserveButton.IsVisible = true;
+            }
 
-           
             seatsLabel.Text = "Seats Available: " + (route.Capacity - reservations.Count);
 
 
@@ -133,9 +144,10 @@ namespace Zerbow.Views
             }
             else
             {
-                reserveButton.IsVisible = true;
+                reserveButton.IsVisible = false;
             }
           
+           
             IsBusy = false;
 
          

@@ -52,7 +52,7 @@ namespace Zerbow.Views
         {
             if (route.Depart_Date.CompareTo(DateTime.Today.Add(DateTime.Now.TimeOfDay)) >= 0)
             {
-                await this.LoadReservation();
+                await LoadReservation();
             }
             else
             {

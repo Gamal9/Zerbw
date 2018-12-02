@@ -28,7 +28,7 @@
 
                 <StackLayout x:Name="usersLayout" HorizontalOptions="FillAndExpand">
                     <Label x:Name="usersLabel" FontAttributes="Bold" Text="Users expected"></Label>
-                   
+                 
                 </StackLayout>
                 <Button x:Name="activateButton" Style="{StaticResource buttonActionStyle}"  Text="Activate route" Clicked="OnActivate" IsVisible="False"></Button>
             </StackLayout>
