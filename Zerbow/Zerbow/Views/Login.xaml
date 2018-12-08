@@ -9,12 +9,14 @@
         <Image Opacity="0.3" Aspect="AspectFill" Source="img.jpg" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}"/>
         <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}">
             <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="4*"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
+            <Grid Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Start">
+                <Image x:Name="image" Aspect="AspectFit" Source="NewLogo.png" HorizontalOptions="Center" Grid.Row="0"/>
+            </Grid>
             
-            <Image x:Name="image" Aspect="AspectFill" Source="NewLogo.png" HorizontalOptions="Center" Grid.Row="0" WidthRequest="100" HeightRequest="100"/>
             <StackLayout VerticalOptions="CenterAndExpand" Grid.Row="1" Margin="30" x:Name="logolayout" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.5}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1}">
                 <Label TextColor="White" Text="User Name"/>
                 <Entry Keyboard="Email" x:Name="email" TextColor="White" />
